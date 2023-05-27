@@ -14,9 +14,22 @@ memes = [
     {'name': 'Tuxedo Winnie The Pooh', 'filename': 'Tuxedo-Winnie-The-Pooh.png', 'captions': {'top': [350, 10, 780, 280], 'bottom': [350, 300, 780, 570]}},
     {'name': 'Megamind peeking', 'filename': 'Megamind-peeking.png', 'captions': {'caption': [0, 0, 530, 200]}},
     {'name': 'Grant gustin over grave', 'filename': 'Grant-gustin-over-grave.png', 'captions': {'tombstone': [75, 160, 180, 250], 'grant gustin': [285, 285, 450, 360]}},
-    {'name': 'Surprised Pikachu', 'filename': 'Surprised-Pikachu.jpg', 'captions': {'caption': [0, 0, 1880, 750]}},
+    {'name': 'Surprised Pikachu', 'filename': 'Surprised-Pikachu.png', 'captions': {'caption': [0, 0, 670, 200]}},
     {'name': 'This Is Fine', 'filename': 'This-Is-Fine.jpg', 'captions': {'fire caption left': [10, 180, 100, 240], 'fire caption right': [190, 220, 280, 270]}},
     {'name': 'Sad Pablo Escobar', 'filename': 'Sad-Pablo-Escobar.jpg', 'captions': {'top': [90, 195, 700, 330], 'bottom left': [100, 515, 340, 670], 'bottom right': [380, 580, 700, 700]}},
+    {'name': 'Grus Plan', 'filename': 'Grus-Plan.jpg', 'captions': {'first': [215, 60, 330, 215], 'second': [560, 60, 680, 220], 'third': [210, 280, 330, 440], 'fourth': [560, 285, 680, 440]}},
+    {'name': 'Disaster Girl', 'filename': 'Disaster-Girl.jpg', 'captions': {'top': [0, 0, 490, 100], 'bottom': [60, 280, 270, 360]}},
+    {'name': 'Hide the pain harold', 'filename': 'Hide-the-pain-harold.png', 'captions': {'top': [0, 0, 275, 125], 'bottom': [0, 310, 260, 430]}},
+    {'name': 'One does not simply', 'filename': 'One-Does-Not-Simply.jpg', 'captions': {'caption': [0, 250, 560, 330]}},
+    {'name': 'Is this a pigeon', 'filename': 'Is-This-A-Pigeon.jpg', 'captions': {'person': [30, 300, 710, 540], 'butterfly': [1100, 255, 1560, 470], 'bottom caption': [100, 1150, 1550, 1400]}},
+    {'name': 'Theyre the same picture', 'filename': 'Theyre-The-Same-Picture.jpg', 'captions': {'left picture': [210, 50, 620, 500], 'right picture': [830, 180, 1340, 600]}},
+    {'name': 'Woman Yelling At Cat', 'filename': 'Woman-Yelling-At-Cat.jpg', 'captions': {'women on left': [0, 0, 335, 95], 'cat on right': [340, 0, 675, 95]}},
+    {'name': 'Two Buttons', 'filename': 'Two-Buttons.jpg', 'captions': {'left button': [65, 110, 270, 175], 'right button': [280, 70, 475, 140], 'bottom caption': [0, 770, 590, 880]}},
+    {'name': 'Left Exit 12 Off Ramp', 'filename': 'Left-Exit-12-Off-Ramp.jpg', 'captions': {'go straight': [120, 100, 320, 250], 'turn right': [430, 100, 660, 250], 'car making hard right': [200, 540, 610, 680]}},
+    {'name': 'Roll Safe Think About It', 'filename': 'Roll-Safe-Think-About-It.jpg', 'captions': {'top caption': [0, 0, 690, 90], 'bottom caption': [0, 290, 690, 390]}},
+    {'name': 'Spiderman Pointing At Spiderman', 'filename': 'Spiderman-pointing-at-spiderman.jpeg', 'captions': {'top caption': [0, 0, 790, 80], 'left spiderman': [120, 150, 400, 270], 'right spiderman': [480, 150, 780, 270]}},
+    {'name': 'Monkey Puppet', 'filename': 'Monkey-Puppet.jpg', 'captions': {'top caption': [0, 0, 900, 250]}},
+    {'name': 'Leonardo Dicaprio Cheers', 'filename': 'Leonardo-Dicaprio-Cheers.jpg', 'captions': {'top caption': [0, 0, 590, 90], 'bottom caption': [0, 300, 590, 390]}},
 ]
 
 //meme_desc_strs = memes.map(x => `${x.name} [${Object.keys(x.captions).join(', ')}]`).join('\n')
