@@ -1,6 +1,6 @@
 var MemeGenerator = function() {
 
-    let memeLookup = memes.reduce((d, x) => { d[x.name.lowerCase()] = x; return d; }, {});
+    let memeLookup = memes.reduce((d, x) => { d[x.name.toLowerCase()] = x; return d; }, {});
 
     function parseMemeText(memeText) {
         const pattern = /(.+?)\s+(\[.+\])/;
@@ -11,7 +11,7 @@ var MemeGenerator = function() {
         const memeName = matches[1].trim();
         const memeCaptionValues = JSON.parse(matches[2]);
 
-        const currentMeme = memeLookup[memeName.lowerCase()];
+        const currentMeme = memeLookup[memeName.toLowerCase()];
         const imageUrl = currentMeme[`./data/labeled/${currentMeme['filename']}`]
         const currentMemeCaptionKeys = Object.keys(currentMeme['captions'])
         const currentMemeCaptionCoords = Object.values(currentMeme['captions'])

@@ -1,4 +1,5 @@
 const CHATGPT_API_KEY = 'chatGptApiKey'
+const MAX_NUM_MEME_CHOICES = 20;
 
 const MODEL_TO_ENDPOINT_LOOKUP = {
     "gpt-4": "/v1/chat/completions",
@@ -112,6 +113,7 @@ var ChatGptManager = function() {
         let meme_desc_strs = memes
             .map(x => `        * ${x.name} [${Object.keys(x.captions).join(', ')}]`)
             .sort(() => (Math.random() > .5) ? 1 : -1)
+            .slice(0, MAX_NUM_MEME_CHOICES)
             .join('\n');
 
         return `
