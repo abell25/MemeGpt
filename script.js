@@ -22,26 +22,34 @@ function showChatMessage(message) {
     document.getElementById('sendButton').addEventListener('click', function() {
         let message = document.getElementById('chatInput').value;
         chatGptManager.getMeme(message).then((response) => {
-            let parsedResponse = memeGenerator.parseMemeText(response['rawText']);
+            let parsedResponses = response['rawText'].split('\n')
+                .map((line) => memeGenerator.parseMemeText(line))
+                .filter((x) => x !== null);
+
+            console.log(`found ${parsedResponses.length} meme responses:\n ${parsedResponses.join('\n')}`);
+            parsedResponses.forEach((x, i) => {
+                console.log(`    ${i} ${x['memeName']}: ${x['captionsWithCoords']}`);
+            });
+
+            parsedResponses.forEach((parsedResponse) => {
+
+                let span = document.createElement('span');
+                span.className = 'chatMessage';
+                let memeUrl = parsedResponse['memeUrl'];
+                let textWithboxCoordinates = parsedResponse['captionsWithCoords'];
+                memeGenerator.showTextOverImage(span, memeUrl, textWithboxCoordinates)
+
+                let chatLog = document.getElementById('chatLog');
+                chatLog.appendChild(span);
+                chatLog.scrollTo(0, chatLog.scrollHeight);
 
 
-
-            let span = document.createElement('span');
-            span.className = 'chatMessage';
-            let memeUrl = parsedResponse['memeUrl'];
-            let textWithboxCoordinates = parsedResponse['captionsWithCoords'];
-            memeGenerator.showTextOverImage(span, memeUrl, textWithboxCoordinates)
-
-            let chatLog = document.getElementById('chatLog');
-            chatLog.appendChild(span);
-            chatLog.scrollTo(0, chatLog.scrollHeight);
-
-
-            console.log('-------parsed response:-------')
-            console.log(parsedResponse)
-            //showChatMessage(response['rawText']);
-            console.log(`response: <<${response}>>`);
-            document.getElementById('chatInput').value = ''; 
+                console.log('-------parsed response:-------')
+                console.log(parsedResponse)
+                //showChatMessage(response['rawText']);
+                console.log(`response: <<${response}>>`);
+                document.getElementById('chatInput').value = ''; 
+            });
         });
     });
 

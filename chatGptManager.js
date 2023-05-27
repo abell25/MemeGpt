@@ -1,5 +1,5 @@
-const CHATGPT_API_KEY = 'chatGptApiKey'
-const MAX_NUM_MEME_CHOICES = 20;
+const CHATGPT_API_KEY = 'chatGptApiKey';
+const MAX_NUM_MEME_CHOICES = 35;
 
 const MODEL_TO_ENDPOINT_LOOKUP = {
     "gpt-4": "/v1/chat/completions",
@@ -34,13 +34,13 @@ var ChatGptManager = function() {
             'modelName': document.getElementById('modelName').value,
             'temperature': parseFloat(document.getElementById('temperature').value),
             'maxTokens': parseInt(document.getElementById('maxTokens').value),
+            'numMemes': parseInt(document.getElementById('numMemes').value),
         };
     }
 
     function sendChatMessage(message) {
         let settings = getSettings(); 
         let endpoint = MODEL_TO_ENDPOINT_LOOKUP[settings.modelName];
-
         if (endpoint === '/v1/chat/completions') {
             return sendChatMessage_v1ChatCompletions(message, settings);
         } else if (endpoint === '/v1/completions') {
@@ -109,7 +109,8 @@ var ChatGptManager = function() {
       }
 
     function getPrompt(message) {
-        
+        let settings = getSettings(); 
+
         let meme_desc_strs = memes
             .map(x => `        * ${x.name} [${Object.keys(x.captions).join(', ')}]`)
             .sort(() => (Math.random() > .5) ? 1 : -1)
@@ -117,7 +118,7 @@ var ChatGptManager = function() {
             .join('\n');
 
         return `
-        You are memeGpt, instead of replying with text you will instead reply with a meme.
+        You are memeGpt, instead of replying with text you will instead be replying with a meme.
         Here are the lists of memes you can reply with (with the format "memeName [caption1, caption2, ...]"):
         # MEMES_LIST:
 ${meme_desc_strs}
@@ -125,9 +126,15 @@ ${meme_desc_strs}
         The first line of your response should only contain the name of the meme you want to reply with along with the caption fields text, for example:
         'Always Has Been ["wait its all ohio?", "its always been ohio"]'
 
-        The rest of your response can be anything you want, but it will be ignored.
+        If more than one meme is requested then put each meme on a new line, for example:
+        'Always Has Been ["wait its all ohio?", "its always been ohio"]'
+        'Woman Yelling At Cat ["Ohio isnt a meme", "but i like it"]'
+        'Surprised Pikachu ["ohio", "its not just a meme"]'
 
-        Respond to the following prompt with a meme:
+        Anything written afterwards the first K lines will be ignored, where K is the number of memes requested.
+
+
+        Please give ${settings['numMemes']} meme responses to the following message:
         "${message}"
         `;
     }

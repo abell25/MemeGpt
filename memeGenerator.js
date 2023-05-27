@@ -1,32 +1,50 @@
 var MemeGenerator = function() {
 
-    let memeLookup = memes.reduce((d, x) => { d[x.name.toLowerCase()] = x; return d; }, {});
+    let memeLookup = memes.reduce((d, x) => { d[normalizeText(x.name)] = x; return d; }, {});
+
+
 
     function parseMemeText(memeText) {
         const pattern = /(.+?)\s+(\[.+\])/;
         const matches = memeText.match(pattern);
-        if (!matches) {
-            throw new Error(`Error parsing meme text: ${memeText}`);
+        try {
+            if (!matches) {
+                throw new Error(`Error parsing meme text: ${memeText}`);
+            }
+            const memeName = matches[1].trim();
+            const memeCaptionValues = JSON.parse(matches[2]);
+            let memeNameNormalized = normalizeText(memeName);
+
+            if (!memeLookup[memeNameNormalized]) {
+                const closestMemeName = findDictKeyWithClosestLevenshteinDistance(memeLookup, memeNameNormalized);
+                if (closestMemeName === null) {
+                    throw new Error(`findDictKeyWithClosestLevenshteinDistance found no solution for '${memeText}'`);
+                }
+                console.log(`Using closest meme name: ${closestMemeName} for ${memeNameNormalized}`);
+                memeNameNormalized = closestMemeName;
+            }
+            const currentMeme = memeLookup[memeNameNormalized];
+
+            const imageUrl = currentMeme[`./data/labeled/${currentMeme['filename']}`]
+            const currentMemeCaptionKeys = Object.keys(currentMeme['captions'])
+            const currentMemeCaptionCoords = Object.values(currentMeme['captions'])
+            if (currentMemeCaptionCoords.length != memeCaptionValues.length) {
+                throw new Error('Error parsing meme text: number of captions does not match number of caption values');
+            }
+
+            var captionsWithCoords = []
+            for (let i=0; i< memeCaptionValues.length; i+= 1) {
+                captionsWithCoords.push([memeCaptionValues[i], currentMemeCaptionCoords[i]])
+            }
+            return {
+                'memeName': memeName,
+                'memeUrl': './data/labeled/' + currentMeme['filename'],
+                'captionsWithCoords': captionsWithCoords,
+            }
+        } catch (error) {
+            console.error(error);
+            return null;
         }
-        const memeName = matches[1].trim();
-        const memeCaptionValues = JSON.parse(matches[2]);
-
-        const currentMeme = memeLookup[memeName.toLowerCase()];
-        const imageUrl = currentMeme[`./data/labeled/${currentMeme['filename']}`]
-        const currentMemeCaptionKeys = Object.keys(currentMeme['captions'])
-        const currentMemeCaptionCoords = Object.values(currentMeme['captions'])
-
-        var captionsWithCoords = []
-        for (let i=0; i< memeCaptionValues.length; i+= 1) {
-            captionsWithCoords.push([memeCaptionValues[i], currentMemeCaptionCoords[i]])
-        }
-
-        return {
-            'memeName': memeName,
-            'memeUrl': './data/labeled/' + currentMeme['filename'],
-            'captionsWithCoords': captionsWithCoords,
-        }
-
 
 
     }
