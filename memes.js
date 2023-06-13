@@ -17,7 +17,7 @@ memes = [
     {'name': 'Surprised Pikachu', 'filename': 'Surprised-Pikachu.png', 'captions': {'top caption': [0, 0, 670, 200], 'bottom caption': [0, 580, 670, 650]}},
     {'name': 'This Is Fine', 'filename': 'This-Is-Fine.jpg', 'captions': {'fire caption left': [10, 180, 100, 240], 'fire caption right': [190, 220, 280, 270]}},
     {'name': 'Sad Pablo Escobar', 'filename': 'Sad-Pablo-Escobar.jpg', 'captions': {'top': [90, 195, 700, 330], 'bottom left': [100, 515, 340, 670], 'bottom right': [380, 580, 700, 700]}},
-    {'name': 'Grus Plan', 'filename': 'Grus-Plan.jpg', 'captions': {'first': [215, 60, 330, 215], 'second': [560, 60, 680, 220], 'third': [210, 280, 330, 440], 'fourth': [560, 285, 680, 440]}},
+    {'name': 'Grus Plan', 'filename': 'Grus-Plan.jpg', 'captions': {'first': [215, 60, 330, 110], 'second': [560, 120, 680, 180], 'third': [210, 280, 330, 360], 'fourth': [560, 360, 680, 420]}},
     {'name': 'Disaster Girl', 'filename': 'Disaster-Girl.jpg', 'captions': {'top': [0, 0, 490, 100], 'bottom': [60, 280, 270, 360]}},
     {'name': 'Hide The Pain Harold', 'filename': 'Hide-the-Pain-Harold.jpg', 'captions': {'top': [0, 0, 275, 125], 'bottom': [0, 310, 260, 430]}},
     {'name': 'One does not simply', 'filename': 'One-Does-Not-Simply.jpg', 'captions': {'caption': [0, 250, 560, 330]}},
@@ -27,7 +27,7 @@ memes = [
     {'name': 'Two Buttons', 'filename': 'Two-Buttons.jpg', 'captions': {'left button': [65, 110, 270, 175], 'right button': [280, 70, 475, 140], 'bottom caption': [0, 770, 590, 880]}},
     {'name': 'Left Exit 12 Off Ramp', 'filename': 'Left-Exit-12-Off-Ramp.jpg', 'captions': {'go straight': [120, 100, 320, 150], 'turn right': [430, 150, 660, 200], 'car making hard right': [200, 540, 610, 680]}},
     {'name': 'Roll Safe Think About It', 'filename': 'Roll-Safe-Think-About-It.jpg', 'captions': {'top caption': [0, 0, 690, 90], 'bottom caption': [0, 290, 690, 390]}},
-    {'name': 'Spiderman Pointing At Spiderman', 'filename': 'Spiderman-pointing-at-spiderman.jpeg', 'captions': {'top caption': [0, 0, 790, 80], 'left spiderman': [120, 150, 400, 270], 'right spiderman': [480, 190, 780, 310]}},
+    {'name': 'Spiderman Pointing At Spiderman', 'filename': 'Spiderman-pointing-at-spiderman.jpeg', 'captions': {'left spiderman': [120, 150, 400, 270], 'right spiderman': [480, 190, 780, 310], 'top caption': [0, 0, 790, 80]}},
     {'name': 'Monkey Puppet', 'filename': 'Monkey-Puppet.jpg', 'captions': {'top caption': [0, 0, 900, 250]}},
     {'name': 'Leonardo Dicaprio Cheers', 'filename': 'Leonardo-Dicaprio-Cheers.jpg', 'captions': {'top caption': [0, 0, 590, 90], 'bottom caption': [0, 300, 590, 390]}},
 ]

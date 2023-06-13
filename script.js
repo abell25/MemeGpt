@@ -26,7 +26,7 @@ function showChatMessage(message) {
                 .map((line) => memeGenerator.parseMemeText(line))
                 .filter((x) => x !== null);
 
-            console.log(`found ${parsedResponses.length} meme responses:\n ${parsedResponses.join('\n')}`);
+            console.log(`found ${parsedResponses.length} meme responses:\n ${parsedResponses.map(x => JSON.stringify(x)).join('\n')}`);
             parsedResponses.forEach((x, i) => {
                 console.log(`    ${i} ${x['memeName']}: ${x['captionsWithCoords']}`);
             });
@@ -47,7 +47,7 @@ function showChatMessage(message) {
                 console.log('-------parsed response:-------')
                 console.log(parsedResponse)
                 //showChatMessage(response['rawText']);
-                console.log(`response: <<${response}>>`);
+                console.log(`response: <<${JSON.stringify(response)}>>`);
                 document.getElementById('chatInput').value = ''; 
             });
         });
