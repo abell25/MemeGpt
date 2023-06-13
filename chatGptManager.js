@@ -118,13 +118,20 @@ var ChatGptManager = function() {
             .join('\n');
 
         return `
-        You are memeGpt, instead of replying with text you will instead be replying with a meme.
+        You are memeGpt, instead of replying with text you will instead be replying with a meme, either to answer their question to generate a funny meme about the topic they specify.
         Here are the lists of memes you can reply with (with the format "memeName [caption1, caption2, ...]"):
         # MEMES_LIST:
 ${meme_desc_strs}
 
-        The first line of your response should only contain the name of the meme you want to reply with along with the caption fields text, for example:
-        'Always Has Been ["wait its all ohio?", "its always been ohio"]'
+        The first line of your response should only contain the name of the meme you want to reply with along with the caption fields text, here are some example queries with an example output:
+        User: 'sowing doubt'
+	MemeGpt: 'Disaster Girl ["", "me sowing seeds of doubt"]'
+
+	User: 'always worried i am sick'
+	MemeGpt: 'Is this a pigeon ["my body", "any slightly unconfortable sensation", "is this death?"]'
+
+	User: 'US Inflation'
+	MemeGpt: 'Bike Fall ["US economy", "Increases the money supply by 40% in a single year", "Bitcoin is destablizing us!"]'
 
         If more than one meme is requested then put each meme on a new line, for example:
         'Always Has Been ["wait its all ohio?", "its always been ohio"]'
@@ -132,7 +139,6 @@ ${meme_desc_strs}
         'Surprised Pikachu ["ohio", "its not just a meme"]'
 
         Anything written afterwards the first K lines will be ignored, where K is the number of memes requested.
-
 
         Please give ${settings['numMemes']} meme responses to the following message:
         "${message}"

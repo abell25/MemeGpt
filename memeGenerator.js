@@ -28,12 +28,14 @@ var MemeGenerator = function() {
             const imageUrl = currentMeme[`./data/labeled/${currentMeme['filename']}`]
             const currentMemeCaptionKeys = Object.keys(currentMeme['captions'])
             const currentMemeCaptionCoords = Object.values(currentMeme['captions'])
+            /*
             if (currentMemeCaptionCoords.length != memeCaptionValues.length) {
                 throw new Error('Error parsing meme text: number of captions does not match number of caption values');
             }
+            */
 
             var captionsWithCoords = []
-            for (let i=0; i< memeCaptionValues.length; i+= 1) {
+            for (let i=0; i< Math.min(memeCaptionValues.length, currentMemeCaptionCoords.length); i+= 1) {
                 captionsWithCoords.push([memeCaptionValues[i], currentMemeCaptionCoords[i]])
             }
             return {
